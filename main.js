@@ -2,7 +2,8 @@ const taskSubmit = document.getElementById('submit-button');
 const taskTable = document.getElementById('task-table');
 const taskName = document.getElementById('task-name');
 let displayTasksHTML = '';
-let tasks = [];
+const tasks = [];
+const tBody = document.getElementById('table-body');
 
 
 taskSubmit.addEventListener('click', function(event) {
@@ -25,15 +26,13 @@ taskSubmit.addEventListener('click', function(event) {
 
   const newRow = document.createElement("tr");
   newRow.innerHTML = displayTasksHTML;
+  if (!tBody) {
 
-  const taskTableBody = taskTable.querySelector("tbody");
-  if (!taskTableBody) {
-    const taskTableBody = document.createElement("tbody");
-    taskTableBody.appendChild(newRow);
-    taskTable.appendChild(taskTableBody);
+    tBody.appendChild(newRow);
+    taskTable.appendChild(tBody);
   }
   else {
-    taskTableBody.appendChild(newRow);
+    tBody.appendChild(newRow);
   }
 
 });
